@@ -1,0 +1,101 @@
+=ExceptionsBegone
+
+ExceptionsBegone is Rails application for handling notifications (also exceptions) from your systems.
+The purpose of the system is to aggregate anything you send to it and it's meant for projects which cannot
+share its exceptions with other companies (privacy policy).
+
+BTW: it is a tool. It's not supposed to win any design awards (yet ;)
+
+There are just few rules:
+
+* you have to specify identifier (which will be used for bundling notifications)
+* specify category
+* and not forget the payload
+
+It is irrelevant if you sending this informations from a ruby, erlang, java, php, c# application or from a console.
+We provide a ruby {gem - exceptions_begone_notifier}[http://github.com/xing/exceptions_begone_notifier] 
+which hooks itself into rails application, catches exceptions and provides some easy to use sender methods.
+If you need something else: just hack it :) 
+
+This application is under heavy development, however is stable to be use in production.
+
+==Installation
+
+It just a normal Rails application. Capistrano will help you to put it live.
+
+==Accepted data format
+
+Here is an example how the message could look like (in JSON)
+
+<tt>{</tt>
+    "notification": {
+        "category": "nagios",
+        "payload": {
+            "message": "memory warning",
+            "host": "my_big_host",
+            "some_important": "informations" 
+        },
+        "identifier": "solr indexer" 
+    }
+<tt>}</tt>
+
+<tt>payload</tt> could be everything you can imagine. 
+
+and you could POST it to the chosen project:
+http://localhost:3000/projects/preview/notifications where
+<tt>preview</tt> would be the project name.
+
+See CURL_TESTS for curl examples. 
+
+==Usage
+
+The user doesn't have to log in into the system. But only a logged in user can "work"
+on an incoming exception. It means he can click the "processing" button which will put his name 
+on the exception and change it status to "in progress". After fixing the code he can click on "done" and
+remove the exception from the view.
+
+The first exception of the bundle(stack) will be send via email to the specified email address.
+This behavior is not configurable right now (and that should change). You can also specified a threshold 
+on a project show page which will send an email with a high priority if number of the same exceptions reach set value.
+
+The other way to stay up-to-date with notifications is to subscribe to the atom feed.
+
+If you don't want to carry about some sort of exceptions go to exclusions and specify a filter (regex). 
+After that this particular messages won't be show in the default view.
+
+There are many more feature on the way (also redesign) but I will be happy about any contribution which could
+make this tool great for any developers in the world.
+
+I will also try to make this readme more worth reading. Stay tuned!
+
+==Authors
+
+{Patryk Peszko}[http://github.com/ppeszko]
+
+==Contributors
+
+XING Team
+
+==License
+
+The MIT License
+ 
+Copyright (c) 2009 {XING AG}[http://www.xing.com/]
+ 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+ 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

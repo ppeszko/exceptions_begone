@@ -1,0 +1,3 @@
+curl -H "Content-Type:application/json" -H "Accept:application/json" \
+  -d "{\"notification\":{\"category\":\"exception\",\"payload\":{\"message\":\"memory warning\"},\"identifier\":\"solr indexer\"}}" \
+  http://localhost:3000/projects/preview/notifications

@@ -1,0 +1,79 @@
+<div id="main">
+  <div class="block">
+    <div class="content">
+      <h2 class="title">Notifications</h2>
+      <div class="inner">
+        <div class="search-box">
+          <% form_tag(project_stacks_url(@project, @stack), :method => "get") do %>
+            <%= text_field_tag "search", "identifier...", :id => "search-box-field" %>
+            <%= submit_tag "Search", :class => "flat-button" %>
+          <% end -%>
+        </div>
+        <div id="filtering-options">
+          <% form_tag project_stacks_url(@project), :method => :get do %>
+            <%= label_tag "filter by:"  %>
+            <%= select_tag "filter", options_for_select(filter_options, params[:filter] || "default") %>
+          <% end %>
+        </div>
+        <div id="max-elem-per-page">
+          <% form_tag project_stacks_url(@project), :method => :get do %>
+            <%= label_tag "per page:" %>
+            <%= select_tag "per_page", options_for_select([50, 100, 200], params[:per_page] || 100) %>
+          <% end %>
+        </div>
+        <div id="exclusions-div">
+          <%= link_to "exclusions", project_exclusions_path(@project) %>
+        </div>
+        <table class="table">
+          <tr>
+            <th class="first"><%= link_to "Identifier", project_stacks_url(@project, {:order => "identifier"}) %></th>
+            <th><%= link_to "#", project_stacks_url(@project, {:order => "count"}) %></th>
+            <th><%= link_to "Category", project_stacks_url(@project, {:order => "category"}) %></th>
+            <th><%= link_to "Status", project_stacks_url(@project, {:order => "status"}) %></th>
+            <th class="updated-at"><%= link_to "Updated at", project_stacks_url(@project, {:order => "updated_at"}) %></th>
+            <th class="last-occurred-at"><%= link_to "Last occurred at", project_stacks_url(@project, {:order => "last_occurred_at"}) %></th>
+            <th class="last">Actions (log in to see)</th>
+          </tr>
+          <%= render @stacks %>
+        </table>
+        <div class="actions-bar">
+          <div class="actions">
+          </div>
+          <%= will_paginate @stacks %>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function($) {
+    $('#search-box-field').focus(function() {
+      $(this).val("");
+    });
+    
+    $('#search-box-field').blur(function() {
+      var searchBox = $(this);
+      if (searchBox.val() == "") {
+        $(this).val('identifier...');
+      }
+    });
+    
+    $('#filter').change(function() {
+      $(this).parent().submit();
+    });
+    
+    $('#per_page').change(function() {
+      $(this).parent().submit();
+    });
+  });
+  
+  jQuery(document).ready(function($) {
+    var searchBoxValue = window.location.search;
+    var searchParametersMatch = searchBoxValue.match(/search=(.+)&/);
+    if (searchParametersMatch) {
+      $("#search-box-field").val(searchParametersMatch[1]);
+    };
+  });
+</script>

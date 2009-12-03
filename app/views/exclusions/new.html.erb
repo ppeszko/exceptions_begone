@@ -1,0 +1,21 @@
+<% form_for [@project, @exclusion ||= Exclusion.new] do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label :pattern %>
+    <%= f.text_field :pattern %>
+  </p>
+  
+  <p>
+    <%= f.label :enabled %>
+    <%= f.check_box :enabled %>
+  </p>
+  
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>

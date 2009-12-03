@@ -1,0 +1,23 @@
+development:
+  <<: *TEST
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: exceptions_begone_development
+  pool: 5
+  username: root
+  password:
+  host: "127.0.0.1"
+
+test: &TEST
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: exceptions_begone_test
+  pool: 5
+  username: root
+  password:
+  host: "127.0.0.1"
+
+cucumber:
+  <<: *TEST

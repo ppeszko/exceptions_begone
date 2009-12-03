@@ -1,0 +1,2 @@
+module ErrorNotificationsHelper
+end

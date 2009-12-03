@@ -1,0 +1,32 @@
+<tr class="entry">
+  <td class="<%= h stack.category %>">
+    <%= link_to h(stack.identifier), project_stack_path(@project, stack), :class => "entry-links" %>
+  </td>
+  <td>
+    <%= h stack.notifications.size %>
+  </td>
+  <td>
+    <%= h stack.category %>
+  </td>
+  <td>
+    <span class="<%= h stack.status %>"><%= h stack.status %> <%= stack.user ? "(#{h(stack.user.username)})" : "" %></span>
+  </td>
+  <td>
+    <%= h stack.updated_at.to_s(:short) %>
+  </td>
+  <td class="last-occurred-cell">
+    <%= h stack.last_occurred_at.to_s(:short) %>
+  </td>
+  <td class="last">
+    <% if current_user && stack.can_change_status?(current_user) %>
+      <% form_for([@project, stack], :html => {:class => "table-buttons"}) do |f| %>
+        <%= f.hidden_field :status, :value => "incoming" %>
+        <%= f.submit "abort", :class => "flat-button" %>
+      <% end %>
+      <% form_for([@project, stack], :html => {:class => "table-buttons"}) do |f| %>
+        <%= f.hidden_field :status, :value => (stack.cycle_status) %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.submit stack.cycle_status, :class => "flat-button"%>
+      <% end %> 
+  <% end %>
+</tr>

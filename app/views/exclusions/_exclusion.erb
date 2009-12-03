@@ -1,0 +1,19 @@
+<tr class="entry">
+  <td>
+    <%= exclusion.name %>
+  </td>
+  <td>
+    <%= exclusion.pattern %>
+  </td>
+  <td>
+    <% form_for [@project, exclusion], :method => :put do |f| %>
+      <%= f.check_box :enabled, :class => "exclusion-toggler", :checked => exclusion.enabled %>
+    <% end %>
+  </td>
+  <td class="last"> 
+    <%= link_to "edit", edit_project_exclusion_path(@project, exclusion) %> | 
+    <% form_for([@project, exclusion], :html => {:method => :delete, :class => "table-buttons"}) do |f| %>
+      <%= f.submit "delete", :class => "flat-button"%>
+    <% end %>
+  </td>
+</tr>

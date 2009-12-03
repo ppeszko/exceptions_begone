@@ -1,0 +1,21 @@
+<table class="table">
+  <tr>
+    <th id="project-name-col">Name</th>
+    <th id="project-description-col">Pattern</th>
+    <th>Enabled</th>
+    <th class="last">&nbsp;</th>
+  </tr>
+  <%= render @exclusions %>
+</table>
+
+<div>
+  <%= link_to "Create new exclusion", new_project_exclusion_url(@project) %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  jQuery(document).ready(function($) {
+    $('.exclusion-toggler').change(function() {
+      $(this).parent().submit();
+    });
+  });
+</script>
