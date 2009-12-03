@@ -63,7 +63,8 @@ The other way to stay up-to-date with notifications is to subscribe to the atom 
 If you don't want to carry about some sort of exceptions go to exclusions and specify a filter (regex). 
 After that this particular messages won't be show in the default view.
 
-There are many more feature on the way (also redesign) but I will be happy about any contribution which could
+There are many more feature on the way (also {redesign}[http://cloud.github.com/downloads/ppeszko/exceptions_begone/Picture_4.png]) 
+but I will be happy about any contribution which could
 make this tool great for any developers in the world.
 
 I will also try to make this readme more worth reading. Stay tuned!
