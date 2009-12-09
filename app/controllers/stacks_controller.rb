@@ -23,9 +23,8 @@ class StacksController < ApplicationController
     @notifications = Notification.paginate_by_stack_id(params[:id], :per_page => 1, :page => params[:page], :order => "id DESC")
     @notification = @notifications.first
     @sections = ActiveSupport::JSON.decode(@notification.payload)
-    if @sections["backtrace"]
-      @sections["backtrace"] = @sections["backtrace"].join("<br/>")
-    end
+    @backtrace = @sections.delete("backtrace")
+    @backtrace = @backtrace.join("<br/>") if @backtrace
   end
   
   def update
