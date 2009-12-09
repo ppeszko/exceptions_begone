@@ -11,6 +11,7 @@
 
       <div id="accordion">
         <%= render :partial => "section", :collection => @sections %>
+        <%= render :partial => "backtrace", :object => @backtrace if @backtrace %>
       </div>
       
       <%= will_paginate @notifications %>
