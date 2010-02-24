@@ -3,7 +3,7 @@ class Stack < ActiveRecord::Base
   belongs_to :project
   has_many :notifications, :dependent => :destroy
     
-  validates_uniqueness_of :identifier, :scope => :category
+  #validates_uniqueness_of :identifier, :scope => :category
   
   named_scope :with_status, lambda { |filter| condition_for_filter(filter) }
   named_scope :for_email_notifications, :conditions => {:email_sent => false}
