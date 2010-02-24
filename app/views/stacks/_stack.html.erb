@@ -1,6 +1,6 @@
 <tr class="entry">
   <td class="<%= h stack.category %>">
-    <%= link_to h(truncate(stack.identifier, :length => 100)), project_stack_path(@project, stack), :class => "entry-links" %>
+    <%= link_to h(truncate(stack.identifier, :length => 250)), project_stack_path(@project, stack), :class => "entry-links" %>
   </td>
   <td>
     <%= h stack.notifications.size %>
