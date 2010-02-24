@@ -1,4 +1,4 @@
-When /^posting on project (.+) notification category (.+) with identifier (.+) with payload (.+)$/ do |project_name, category, identifier, payload|
+When /^posting on project "?(.+)"? notification category "?(.+)"? with identifier "?(.+)"? with payload "?(.+)"?$/ do |project_name, category, identifier, payload|
   header("Content-type", "application/json")
   header("Accept", "application/json")
   

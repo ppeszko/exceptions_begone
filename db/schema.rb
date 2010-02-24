@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091203130352) do
+ActiveRecord::Schema.define(:version => 20100218094544) do
 
   create_table "exclusions", :force => true do |t|
     t.string   "name"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(:version => 20091203130352) do
     t.text     "payload",    :limit => 2147483647,                :null => false
     t.integer  "status",                           :default => 0, :null => false
     t.integer  "stack_id",                                        :null => false
+    t.text     "identifier"
   end
+
+  add_index "notifications", ["stack_id"], :name => "index_notifications_on_stack_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -37,17 +40,17 @@ ActiveRecord::Schema.define(:version => 20091203130352) do
   end
 
   create_table "stacks", :force => true do |t|
-    t.text     "identifier",             :limit => 2147483647
+    t.text     "identifier"
     t.integer  "project_id"
     t.integer  "status"
-    t.integer  "notifications_count",                          :default => 0
+    t.integer  "notifications_count",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category",                                     :default => "",                    :null => false
+    t.string   "category",               :default => "",                    :null => false
     t.integer  "user_id"
-    t.boolean  "email_sent",                                   :default => false,                 :null => false
-    t.datetime "last_occurred_at",                             :default => '2009-10-16 17:52:14', :null => false
-    t.boolean  "threshold_warning_sent",                       :default => false
+    t.boolean  "email_sent",             :default => false,                 :null => false
+    t.datetime "last_occurred_at",       :default => '2009-10-16 17:52:14', :null => false
+    t.boolean  "threshold_warning_sent", :default => false
   end
 
   create_table "users", :force => true do |t|
