@@ -4,7 +4,7 @@ class StacksController < ApplicationController
   
   @@order_possiblities = {"category" => "category", "identifier" => "identifier", 
     "count" => "notifications_count DESC", "status" => "status", 
-    "updated_at" => "updated_at DESC", "last_occurred_at" => "last_occurred_at DESC"}
+    "updated_at" => "updated_at DESC", "created_at" => "created_at DESC"}
   
   def index
     per_page = params[:per_page] || 50

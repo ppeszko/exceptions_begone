@@ -31,7 +31,7 @@
             <th><%= link_to "Category", project_stacks_url(@project, {:order => "category"}) %></th>
             <th><%= link_to "Status", project_stacks_url(@project, {:order => "status"}) %></th>
             <th class="updated-at"><%= link_to "Updated at", project_stacks_url(@project, {:order => "updated_at"}) %></th>
-            <th class="last-occurred-at"><%= link_to "Last occurred at", project_stacks_url(@project, {:order => "last_occurred_at"}) %></th>
+            <th class="last-occurred-at"><%= link_to "Created at", project_stacks_url(@project, {:order => "created_at"}) %></th>
             <th class="last">Actions (log in to see)</th>
           </tr>
           <%= render @stacks %>
