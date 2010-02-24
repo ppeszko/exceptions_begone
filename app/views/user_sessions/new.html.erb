@@ -22,11 +22,20 @@
             <%= error_message_on :user_session, :password %>
           </div>
           <div class="clear"></div>
+        </div>
+        <div class="group">
+          <div class="left">
+            <%= f.label :remember_me, "Remember?", :class => "label right" %>
           </div>
-          <div class="group navform">
-            <div class="right">
-              <%= f.submit "Login", :class => "button" %>
-            </div>
+          <div class="right">
+            <%= f.check_box :remember_me, {:class => "check_box"} %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="group navform">
+          <div class="right">
+            <%= f.submit "Login", :class => "button" %>
+          </div>
           <div class="clear"></div>
         </div>
       <% end %>
