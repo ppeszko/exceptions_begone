@@ -5,3 +5,4 @@ vendor/gems/
 vendor/rails
 Capfile
 /doc/
+rerun.txt
