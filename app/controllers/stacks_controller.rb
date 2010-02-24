@@ -20,7 +20,7 @@ class StacksController < ApplicationController
   end
   
   def show
-    @notifications = Notification.paginate_by_stack_id(params[:id], :per_page => 1, :page => params[:page], :order => "id DESC")
+    @notifications = Notification.paginate_by_stack_id(params[:id], :per_page => 1, :page => params[:page], :order => "id ASC")
     @notification = @notifications.first
     @sections = ActiveSupport::JSON.decode(@notification.payload)
     @backtrace = @sections.delete("backtrace")
