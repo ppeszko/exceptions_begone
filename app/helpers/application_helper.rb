@@ -2,7 +2,7 @@
 module ApplicationHelper
   def title
     if @notifications
-      h truncate("[#{@project.name}] #{@notifications.first.identifier}", 80)
+      truncate("[#{@project.name}] #{@notifications.first.identifier}", :length => 80)
     else
       "Exceptions Begone"
     end
