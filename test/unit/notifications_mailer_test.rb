@@ -74,4 +74,12 @@ class NotificationsMailerTest < ActionMailer::TestCase
     assert_match /http:\/\/example.com\/projects\/#{stack.project.id}\/stacks\/#{stack.id}/, email.body
   end
   
+  test "backtrace should not be sorted" do
+    payload = { "backtrace" => ["b_line", "a_line"] }
+    notification = Factory.create(:notification, :payload => ActiveSupport::JSON.encode(payload))
+    
+    email = NotificationsMailer.deliver_notification(notification.stack)
+    assert_match /b_line\n.*a_line/, email.body
+  end
+  
 end
