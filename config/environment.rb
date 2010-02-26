@@ -47,4 +47,5 @@ Rails::Initializer.run do |config|
   config.gem "mislav-will_paginate", :lib => "will_paginate", :source => "http://gems.github.com"
   config.gem "lukeredpath-simpleconfig", :lib => "simpleconfig"
   config.gem "ruby-net-ldap", :lib => "net/ldap"
+  config.gem "mongo_mapper"
 end
