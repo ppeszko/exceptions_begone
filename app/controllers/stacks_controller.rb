@@ -7,15 +7,15 @@ class StacksController < ApplicationController
     "updated_at" => "updated_at DESC", "created_at" => "created_at DESC"}
   
   def index
-    per_page = params[:per_page] || 50
     order = @@order_possiblities.fetch(params[:order], "updated_at DESC")
-    session[:filter] = params[:filter] ? params[:filter] : session[:filter]
+    session[:filter] = params[:filter] ? params[:filter] : session[:filter] || "default"
+    session[:per_page] = params[:per_page] ? params[:per_page] : session[:per_page] || 50
     matching_mode = params[:filter] == "include" ? :include : :exclude
     
     if params[:search]
-      @stacks = @project.stacks.with_identifier(params[:search]).exclusions_matching(@project.exclusions, matching_mode).paginate(:per_page => per_page, :page => params[:page], :order => order)
+      @stacks = @project.stacks.with_identifier(params[:search]).exclusions_matching(@project.exclusions, matching_mode).paginate(:per_page => session[:per_page], :page => params[:page], :order => order)
     else
-      @stacks = @project.stacks.with_status(session[:filter]).exclusions_matching(@project.exclusions, matching_mode).paginate(:per_page => per_page, :page => params[:page], :order => order)
+      @stacks = @project.stacks.with_status(session[:filter]).exclusions_matching(@project.exclusions, matching_mode).paginate(:per_page => session[:per_page], :page => params[:page], :order => order)
     end
   end
   

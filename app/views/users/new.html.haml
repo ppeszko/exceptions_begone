@@ -1,0 +1,25 @@
+- form_for @user, :html => { :class => "signup form" } do |f|
+  %fieldset
+    %legend
+      %span
+        Signup
+    %ul
+      %li
+        = f.label :username, "Username"
+        = f.text_field :username, :title => "Use your ldap name"
+        = error_message_on :user, :username
+      %li
+        = f.label :email, "E-Mail"
+        = f.text_field :email, :title => "Ex: test@example.com"
+        = error_message_on :user, :email
+      - unless AUTHLOGIC_ADDON == "ldap"
+        %li
+          = f.label :password, "Password"
+          = f.password_field :password, :title => "Choose it wisely"
+          = error_message_on :user, :password
+        %li
+          = f.label :password_confirmation, "Password confirmation"
+          = f.password_field :password_confirmation, :title => "Should be the same as you password"
+          = error_message_on :user, :password_confirmation
+  %fieldset
+    - submit_button "Signup"

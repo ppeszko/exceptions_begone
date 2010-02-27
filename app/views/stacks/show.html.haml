@@ -1,0 +1,47 @@
+%h1
+  - title(true)
+
+= will_paginate @notifications
+
+%div{ :class => "stack" }
+  %h3
+    Project
+  %dl
+    %dt
+      Name
+    %dd
+      = @project.name
+    %dt
+      Identifier
+    %dd
+      = @notifications.first.stack.identifier
+    %dt
+      Amount
+    %dd
+      = @notification.stack.notifications.size
+    %dt
+      Category
+    %dd
+      = @notification.stack.category
+    %dt
+      Status
+    %dd
+      = h @notification.stack.status
+      = h " (#{@notification.stack.user.username})" if @notification.stack.user
+    %dt
+      Updated at
+    %dd
+      = @notification.stack.updated_at.to_s(:short)
+    %dt
+      Last occured at
+    %dd
+      = h @notification.stack.last_occurred_at.to_s(:short)
+    - if current_user && @notification.stack.can_change_status?(current_user)
+      %dt
+        Action
+      %dd
+        = render :partial => "processing_actions", :locals => { :stack => @notification.stack }
+= render :partial => "section", :collection => @sections
+= render :partial => "backtrace", :object => @backtrace if @backtrace
+
+= will_paginate @notifications

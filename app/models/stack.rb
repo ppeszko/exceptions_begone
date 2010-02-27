@@ -13,7 +13,7 @@ class Stack < ActiveRecord::Base
   named_scope :warning_not_sent, :conditions => ["threshold_warning_sent != ?", true]
   named_scope :exclusions_matching, lambda { |exclusions, matching_mode| conditions_for_exclusions(exclusions, matching_mode) }
 
-  @@status_to_integer = {"incoming" => 0, "processing" => 1, "done" => 2}
+  @@status_to_integer = {"open" => 0, "in progress" => 1, "done" => 2}
   @@integer_to_status = @@status_to_integer.invert
     
   def before_create
@@ -46,9 +46,9 @@ class Stack < ActiveRecord::Base
         {}
       when "done"
         {:conditions => ["status = 2"]}
-      when "incoming"
+      when "open"
         {:conditions => ["status = 0"]}
-      when "in_progress"
+      when "progress"
         {:conditions => ["status = 1"]}
       else
         {:conditions => ["status != 2"]}

@@ -1,0 +1,15 @@
+%div{ :class => "stack" }
+  %h3
+    = section.first
+  %dl
+    - sorted_output(section.last).each do |array_with_data|
+      - if array_with_data.last
+        %dt
+          = h array_with_data.first
+        %dd
+          = h array_with_data.last.inspect
+      - else
+        %dt
+          = section.first
+        %dd
+          = h array_with_data.first

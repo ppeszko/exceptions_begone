@@ -1,0 +1,16 @@
+- form_for @project, :html => { :class => "project form" } do |f|
+  = f.error_messages
+  %fieldset
+    %legend
+      %span
+        Create a new project
+    %ul
+      %li
+        = f.label :name
+        = f.text_field :name
+      %li
+        = f.label :description
+        = f.text_field :description
+  %fieldset
+    - submit_button "Create"
+    or #{link_to "cancel", projects_path}

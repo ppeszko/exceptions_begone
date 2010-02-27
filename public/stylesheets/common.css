@@ -1,0 +1,539 @@
+/* RESET
+=========================================================================== */
+a, abbr, acronym, address, applet, big, blockquote, body, caption, cite,
+code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4,
+h5, h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre,
+q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot,
+th, thead, tr, tt, ul, var {
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+:focus {
+  outline: 0;
+}
+ol, ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+caption, th, td {
+  font-weight: normal;
+  text-align: left;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+}
+blockquote, q {
+  quotes: "" "";
+}
+a img {
+  border: 0;
+}
+button {
+  background: transparent;
+  border: 0 none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0 0 4px;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+/* ================================================================ RESET = */
+
+
+/* COLOR
+=========================================================================== */
+
+/* GENERAL
+--------------------------------------------------------------------------- */
+body {
+  background: hsl(18, 9%, 78%);
+  color: hsl(0, 10%, 16%);
+}
+a {
+  color: hsl(2, 63%, 51%);
+  color: hsl(357, 83%, 14%);
+}
+a:hover {
+  color: hsl(0, 10%, 16%);
+}
+h1 a {
+  color: rgb(158, 158, 154);
+}
+
+/* HEADER
+--------------------------------------------------------------------------- */
+header {
+  text-shadow: 0 1px 0 hsla(0, 5%, 100%, 0.7);
+}
+header a {
+  color: hsl(18, 9%, 70%);
+}
+
+/* NAVIGATION
+--------------------------------------------------------------------------- */
+nav ul {
+  background: hsla(51, 13%, 90%, 0.5);
+  border-color: hsl(18, 9%, 70%);
+}
+nav a {
+  background: hsl(18, 9%, 70%);
+  border-color: hsl(18, 9%, 70%);
+  color: hsl(0, 10%, 30%);
+  text-shadow: 0 1px 0 hsla(0, 5%, 100%, 0.7);
+}
+nav a:hover {
+  background: hsl(18, 9%, 78%);
+}
+
+.button {
+  background: -moz-linear-gradient(100% 100% 90deg, hsl(60, 5%, 70%), hsl(60, 5%, 80%));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsl(60, 5%, 80%)), to(hsl(60, 5%, 70%)));
+  border-color: hsl(60, 5%, 60%);
+  color: hsl(60, 5%, 20%);
+  text-shadow: 0 1px 0 hsla(0, 5%, 100%, 0.7);
+}
+.button:hover,
+button:hover .button {
+  background: -moz-linear-gradient(100% 100% 90deg, hsl(60, 5%, 65%), hsl(60, 5%, 80%));
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsl(60, 5%, 80%)), to(hsl(60, 5%, 65%)));
+  border-color: hsl(60, 5%, 50%);
+  color: hsl(60, 5%, 0%);
+}
+
+/* TABLE and FORM
+--------------------------------------------------------------------------- */
+.table,
+.form,
+.stack {
+  background: hsl(51, 13%, 90%);
+  border-color: hsl(18, 9%, 70%);
+}
+.table caption span,
+.form legend span {
+  background: -moz-linear-gradient(100% 80% 90deg, hsl(51, 13%, 90%), hsl(18, 9%, 78%));
+  background: -webkit-gradient(linear, 0% 0%, 0% 80%, from(hsl(18, 9%, 78%)), to(hsl(51, 13%, 90%)));
+  border-color: hsl(60, 5%, 50%);
+  color: hsl(0, 10%, 30%);
+  text-shadow: 0 1px 0 hsla(0, 5%, 100%, 0.7);
+}
+.table th {
+  border-color: rgb(189, 189, 185);
+  color: rgb(127, 127, 122);
+  text-shadow: 0 1px 0 hsla(0, 5%, 100%, 0.7);
+}
+.table td,
+.stack dd,
+.stack p {
+  border-color: rgb(189, 189, 185);
+}
+.table tbody tr:hover,
+.stack dd:hover,
+.stack p:hover {
+  background: hsl(51, 13%, 95%);
+}
+
+/* MISCELLANEOUS
+--------------------------------------------------------------------------- */
+.anno {
+  color: rgb(159, 159, 155);
+}
+
+.open {
+  background: hsla(0, 70%, 70%, 0.3);
+}
+.progress {
+  background: hsla(60, 70%, 70%, 0.3);
+}
+.done {
+  background: hsla(120, 60%, 70%, 0.3);
+}
+.table tbody .open:hover {
+  background: hsla(0, 70%, 70%, 0.6);
+}
+.table tbody .progress:hover {
+  background: hsla(60, 70%, 70%, 0.6);
+}
+.table tbody .done:hover {
+  background: hsla(120, 60%, 70%, 0.6);
+}
+
+/* ================================================================ COLOR = */
+
+
+/* TYPOGRAPHY
+=========================================================================== */
+
+/* GENERAL
+--------------------------------------------------------------------------- */
+body {
+  font: normal normal normal 12px/140% "Lucida Grande", Lucida, "Helvetica", Tahoma, sans-serif;
+}
+h1 {
+  font-size: 24px;
+}
+
+/* HEADER
+--------------------------------------------------------------------------- */
+header {
+  font: normal normal bold 32px/140% monospace, "Lucida Grande", Lucida, "Helvetica", Tahoma, sans-serif;
+  text-transform: uppercase;
+}
+header span {
+  font: normal normal normal 12px/140% "Lucida Grande", Lucida, "Helvetica", Tahoma, sans-serif;
+  letter-spacing: 27px;
+}
+
+/* NAVIGATION / TABLE and FORM / BUTTON
+--------------------------------------------------------------------------- */
+nav a,
+.table caption span,
+.form legend span,
+.table th,
+.button {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+nav a,
+.table th,
+.button {
+  font-size: 10px;
+}
+
+/* =========================================================== TYPOGRAPHY = */
+
+
+/* COMMON
+=========================================================================== */
+
+/* GENERAL
+--------------------------------------------------------------------------- */
+body {
+  margin: 20px;
+  min-width: 800px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 {
+  margin: 0 0 15px;
+}
+h1 a:hover {
+  text-decoration: none;
+}
+h1 .atom-feed {
+  background: url(/images/feed.png) no-repeat;
+  display: inline-block;
+  height: 16px;
+  text-indent: -600em;
+  width: 16px;
+}
+
+
+/* HEADER
+--------------------------------------------------------------------------- */
+header {
+  display: block;
+  left: 0;
+  min-width: 840px;
+  position: absolute;
+  text-align: right;
+  top: 0;
+  width: 100%;
+}
+header a {
+  display: block;
+  float: right;
+  margin: -4px 20px 0;
+  position: relative;
+  z-index: 1;
+}
+header span {
+  display: block;
+  margin: -13px -20px 0 0;
+}
+header a:hover {
+  text-decoration: none;
+}
+
+/* NAVIGATION
+--------------------------------------------------------------------------- */
+nav {
+  display: block;
+  margin: -20px -20px 15px;
+  position: relative;
+}
+nav ul {
+  border-style: none none solid none;
+  border-width: 2px;
+  padding: 20px 0 0 30px;
+}
+nav li {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+nav a {
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-style: solid solid none solid;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-width: 2px;
+  display: block;
+  margin-bottom: -2px;
+  padding: 4px 8px;
+}
+nav a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+/* TABLE and FORM
+--------------------------------------------------------------------------- */
+.table,
+.form,
+.stack {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 2px;
+/*  margin: 7px 0 15px 0;*/
+  padding: 5px 0 10px;
+  table-layout: fixed;
+  vertical-align: top;
+  width: 100%;
+}
+.table caption {
+  height: 0;
+}
+.table caption span,
+.form legend span {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+/*  border-style: solid;*/
+/*  border-width: 2px;*/
+  display: inline-block;
+  padding: 2px 8px;
+  position: relative;
+  top: -16px;
+  margin: 0 0 0 -8px;
+  letter-spacing: 3px;
+}
+.table caption span {
+  top: -9px;
+  margin: 0 0 0 12px;
+}
+.table th {
+  border-style: none none solid none;
+  border-width: 1px;
+  margin: 0 2px;
+  padding: 20px 5px 0 5px;
+}
+.table td {
+  border-style: none none solid none;
+  border-width: 1px;
+  margin: 0 2px;
+  overflow: hidden;
+  padding: 4px 5px;
+  vertical-align: middle;
+  height: 34px;
+  white-space: nowrap;
+}
+.table th:first-child,
+.table td:first-child {
+  padding-left: 17px;
+}
+.table th:last-child,
+.table td:last-child {
+  padding-right: 17px;
+}
+.table tfoot td {
+  border: 0 none;
+  padding-top: 10px;
+}
+
+.form fieldset {
+  margin: 0 17px;
+}
+.form li {
+  margin-bottom: 10px;
+}
+.form li:last-child {
+  margin-bottom: 15px;
+}
+.form label {
+  display: block;
+}
+
+/* BUTTON
+--------------------------------------------------------------------------- */
+.button {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 3px 9px 2px;
+  display: inline-block;
+}
+.button:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* =============================================================== COMMON = */
+
+.identifier { width: auto; }
+.amount { width: 50px; }
+.category { width: 100px; }
+.status { width: 125px; }
+.updated-at { width: 135px; }
+.last-occured-at { width: 135px; }
+.action { width: 190px; }
+
+.option {
+  display: inline-block;
+  position: relative;
+}
+.option ul {
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  background: rgb(223, 223, 219);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-color: rgb(159, 159, 155);
+  border-style: solid;
+  border-width: 2px;
+  display: none;
+  left: 0;
+  position: absolute;
+  top: 22px;
+  white-space: nowrap;
+  width: 160px;
+  z-index: 1;
+}
+.option:hover ul {
+  display: block;
+}
+.option li:last-child a {
+  -moz-border-radius-bottomleft: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: 0 none;
+}
+.option li a {
+  border-color: rgb(189, 189, 185);
+  border-style: none none solid none;
+  border-width: 1px;
+  display: block;
+  padding: 4px 5px;
+}
+.option li a:hover,
+.option li.active a {
+  background: rgb(243, 243, 239);
+}
+.option h3 {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 12px;
+  font-weight: normal;
+  height: 18px;
+  padding: 2px 5px;
+  position: relative;
+}
+.option h3 span {
+  color: rgb(158, 158, 154);
+  font-size: 10px;
+}
+.option:hover h3 {
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  background: rgb(223, 223, 219);
+  border-color: rgb(159, 159, 155);
+  border-style: solid solid none solid;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-width: 2px;
+  cursor: default;
+  z-index: 2;
+}
+
+.signup input[type=text],
+.signup input[type=password] {
+  width: 250px;
+}
+
+.login input[type=text],
+.login input[type=password] {
+  width: 250px;
+}
+
+.project input[type=text] {
+  width: 250px;
+}
+
+.stack {
+  margin-bottom: 10px;
+}
+.stack h3 {
+  border-color: rgb(189, 189, 185);
+  border-style: none none solid none;
+  border-width: 1px;
+  clear: left;
+  color: rgb(127, 127, 122);
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 2px 17px;
+  text-shadow: 0 1px 0 hsla(0, 5%, 100%, 0.7);
+  text-transform: uppercase;
+}
+.stack dt {
+  clear: left;
+  display: block;
+  float: left;
+  padding: 4px 5px 4px 17px;
+  word-wrap: break-word;
+}
+.stack dd,
+.stack p {
+  border-style: none none solid none;
+  border-width: 1px;
+  padding: 4px 17px 4px 300px;
+  vertical-align: top;
+  word-wrap: break-word;
+}
+.stack p {
+  padding: 4px 17px;
+}
+
+.action form,
+dl form {
+  display: inline-block;
+}
+.action button {
+  padding: 0;
+}

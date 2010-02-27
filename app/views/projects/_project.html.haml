@@ -1,0 +1,9 @@
+%tr
+  %td
+    = link_to project.name, project_stacks_path(project)
+  %td
+    = project.description
+  %td
+    - form_tag project_url(project), :method => :put do
+      %fieldset
+        = select_tag "warning-threshold-#{project.id}", options_for_select([10, 20, 30], project.warning_threshold), :name => "project[warning_threshold]"

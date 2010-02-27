@@ -1,0 +1,66 @@
+.options
+  %h2
+    Options
+
+  - form_tag project_stacks_url(@project, @stack), :method => "get" do
+    = text_field_tag "search", params[:search]
+    = submit_tag "Search"
+
+  .filter.option
+    %h3
+      Filter status
+      %span
+        = " (#{session[:filter]})"
+    %ul
+      - filter_options.each do |k, v|
+        %li{ :class => "#{'active' if session[:filter] == k}" }
+          %a{ :href => project_stacks_path(@project, :filter => k) }
+            = v
+
+  .pagination.option
+    %h3
+      Items per page
+      %span
+        = " (#{session[:per_page]})"
+    %ul
+      - pagination_options.each do |v|
+        %li{ :class => "#{'active' if session[:per_page] == v.to_s}" }
+          %a{ :href => project_stacks_path(@project, :per_page => v) }
+            = v
+
+  = link_to "exclusions", project_exclusions_path(@project)
+
+%table{ :class => "table" }
+  %caption
+    %span
+      Notifications
+  %colgroup
+    %col{ :class => "identifier" }
+    %col{ :class => "amount" }
+    %col{ :class => "category" }
+    %col{ :class => "status" }
+    %col{ :class => "updated-at" }
+    %col{ :class => "last-occured-at" }
+    %col{ :class => "action" }
+  %thead
+    %tr
+      %th
+        Identifier
+      %th
+        \#
+      %th
+        Category
+      %th
+        Status
+      %th
+        Updated at
+      %th
+        Last occured at
+      %th
+        Action
+  %tfoot
+    %tr
+      %td{ :colspan => "7" }
+        = will_paginate @stacks
+  %tbody
+    = render @stacks

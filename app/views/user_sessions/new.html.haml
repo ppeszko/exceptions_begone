@@ -1,0 +1,19 @@
+- form_for @user_session, :html => { :class => "login form" } do |f|
+  %fieldset
+    %legend
+      %span
+        Login
+    %ul
+      %li
+        = f.label :username, "Username"
+        = f.text_field :username
+        = error_message_on :user_session, :username
+      %li
+        = f.label :password, "Password"
+        = f.password_field :password
+        = error_message_on :user_session, :password
+      %li
+        = f.label :remember_me, "Remember me"
+        = f.check_box :remember_me
+  %fieldset
+    - submit_button "Login"

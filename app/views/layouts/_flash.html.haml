@@ -1,0 +1,6 @@
+- unless self.flash[:notice].blank?
+  %p.message.notice
+    = self.flash[:notice]
+- unless self.flash[:alert].blank?
+  %p.message.alert
+    = self.flash[:alert]

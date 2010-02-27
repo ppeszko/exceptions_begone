@@ -48,3 +48,6 @@ Rails::Initializer.run do |config|
   config.gem "lukeredpath-simpleconfig", :lib => "simpleconfig"
   config.gem "ruby-net-ldap", :lib => "net/ldap"
 end
+
+Haml::Template.options[:ugly] = true
+Haml::Template.options[:attr_wrapper] = '"'

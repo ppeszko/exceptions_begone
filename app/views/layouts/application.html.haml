@@ -1,0 +1,36 @@
+!!! 5
+%html
+  %head
+    %title
+      = title
+    %meta{ :charset => "UTF-8" }
+    %link{ :media => "all", :rel => "stylesheet", :type => "text/css", :href => "/stylesheets/common.css" }
+    - if @project && @project.id.present?
+      %link{ :rel => "alternate", :type => "application/atom+xml", :href => project_stacks_path(@project, :atom) }
+
+  %body
+    = render "/layouts/flash"
+    %header
+      %a{ :href => projects_path, :title => "There is no Exception, there is only Zuul." }
+        Exceptions <span>Begone</span>
+    %nav
+      %ul
+        %li
+          %a{ :href => projects_path }
+            Projects
+        - if current_user
+          %li
+            %a{ :href => edit_user_path(:current) }
+              Edit profile
+          %li
+            %a{ :href => logout_path }
+              Logout
+        - else
+          %li
+            %a{ :href => login_path }
+              Login
+          %li
+            %a{ :href => new_user_path }
+              Signup
+    %section
+      = yield

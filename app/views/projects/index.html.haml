@@ -1,0 +1,30 @@
+%table{ :class => "table"}
+  %caption
+    %span
+      Projects
+  %colgroup
+    %col{ :class => "name" }
+    %col{ :class => "description" }
+    %col{ :class => "warning-threshold" }
+  %thead
+    %tr
+      %th
+        Name
+      %th
+        Description
+      %th
+        Warning threshold
+  %tfoot
+    %tr
+      %td{ :colspan => "3" }
+        = link_to "Create", new_project_path, :class => "button"
+        = will_paginate(@projects)
+  %tbody
+    = render @projects
+
+:javascript
+  jQuery(document).ready(function($) {
+    $('.warning_threshold').change(function() {
+      $(this).parent().submit();
+    });
+  });

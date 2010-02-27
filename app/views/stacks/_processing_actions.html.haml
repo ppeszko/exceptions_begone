@@ -1,0 +1,10 @@
+- if current_user && stack.can_change_status?(current_user)
+  - remote_form_for [@project, stack], :html => { :id => "status-#{stack.id}" } do |f|
+    %fieldset
+      = f.hidden_field :status, :value => (stack.cycle_status)
+      = f.hidden_field :user_id, :value => current_user.id
+      - submit_button stack.cycle_status
+  - remote_form_for [@project, stack], :html => { :id => "abort-#{stack.id}" } do |f|
+    %fieldset
+      = f.hidden_field :status, :value => "incoming"
+      - submit_button "abort"
