@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(:version => 20100218094544) do
   end
 
   create_table "notifications", :force => true do |t|
+    t.text     "identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "payload",    :limit => 2147483647,                :null => false
-    t.integer  "status",                           :default => 0, :null => false
-    t.integer  "stack_id",                                        :null => false
-    t.text     "identifier"
+    t.text     "payload",    :limit => 16777215,                :null => false
+    t.integer  "status",                         :default => 0, :null => false
+    t.integer  "stack_id",                                      :null => false
   end
 
   add_index "notifications", ["stack_id"], :name => "index_notifications_on_stack_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20100218094544) do
     t.string   "category",               :default => "",                    :null => false
     t.integer  "user_id"
     t.boolean  "email_sent",             :default => false,                 :null => false
-    t.datetime "last_occurred_at",       :default => '2009-10-16 17:52:14', :null => false
+    t.datetime "last_occurred_at",       :default => '2009-11-02 15:51:20', :null => false
     t.boolean  "threshold_warning_sent", :default => false
   end
 

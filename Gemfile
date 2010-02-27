@@ -7,6 +7,7 @@ gem "authlogic", "2.1.3"
 gem "mislav-will_paginate", "2.3.11", :lib => "will_paginate"
 gem "lukeredpath-simpleconfig", "1.0.2", :lib => "simpleconfig"
 gem "ruby-net-ldap", "0.0.4", :lib => "net/ldap"
+gem "haml"
 
 group :development do
   gem "josevalim-rails-footnotes", :lib => "rails-footnotes"
