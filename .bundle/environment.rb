@@ -141,39 +141,42 @@ end
 
 module Bundler
   LOCKED_BY    = '0.9.9'
-  FINGERPRINT  = "5c1d17668ac5f9517ddb8c5f64d1066497d95bdd"
-  AUTOREQUIRES = {:test=>[["redgreen", false], ["mocha", false]], :default=>[["will_paginate", true], ["mysql", false], ["authlogic", false], ["simpleconfig", true], ["net/ldap", true], ["rails", false]], :cucumber=>[["factory_girl", true], ["cucumber-rails", false], ["webrat", false], ["database_cleaner", false], ["rspec", false], ["rspec-rails", false]], :development=>[["rails-footnotes", true]]}
+  FINGERPRINT  = "a6294021c2a3c6e7a8c9fd0eef61969852f429d3"
+  AUTOREQUIRES = {:test=>[["factory_girl", true], ["redgreen", false], ["mocha", false]], :default=>[["mongodb-mongo", false], ["jnunemaker-validatable", false], ["mongo_mapper", true], ["will_paginate", true], ["mysql", false], ["authlogic", false], ["simpleconfig", true], ["net/ldap", true], ["rails", false]], :development=>[["rails-footnotes", true]], :cucumber=>[["cucumber-rails", false], ["database_cleaner", false]]}
   SPECS        = [
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/josevalim-rails-footnotes-3.6.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/josevalim-rails-footnotes-3.6.2/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/nokogiri-1.4.1.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/nokogiri-1.4.1/lib", "/Library/Ruby/Gems/1.8/gems/nokogiri-1.4.1/ext"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/josevalim-rails-footnotes-3.6.2.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/josevalim-rails-footnotes-3.6.2/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/activesupport-2.3.4.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/activesupport-2.3.4/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/thoughtbot-factory_girl-1.2.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/thoughtbot-factory_girl-1.2.2/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/builder-2.1.2.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/builder-2.1.2/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/json_pure-1.2.1.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/json_pure-1.2.1/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/actionmailer-2.3.4.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/actionmailer-2.3.4/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/activesupport-2.3.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/activesupport-2.3.4/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/builder-2.1.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/builder-2.1.2/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/actionmailer-2.3.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/actionmailer-2.3.4/lib"]},
+        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/json_pure-1.2.2.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/json_pure-1.2.2/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/redgreen-1.2.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/redgreen-1.2.2/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/cucumber-rails-0.2.3.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/cucumber-rails-0.2.3/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/cucumber-rails-0.2.3.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/cucumber-rails-0.2.3/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/mongodb-mongo-0.14.1.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/mongodb-mongo-0.14.1/lib"]},
         {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/rack-1.0.1.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/rack-1.0.1/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/actionpack-2.3.4.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/actionpack-2.3.4/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/actionpack-2.3.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/actionpack-2.3.4/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/webrat-0.6.0.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/webrat-0.6.0/lib"]},
         {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/database_cleaner-0.5.0.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/database_cleaner-0.5.0/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/mislav-will_paginate-2.3.11.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/mislav-will_paginate-2.3.11/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/mysql-2.8.1.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/mysql-2.8.1/lib", "/Users/comes/.bundle/ruby/1.8/gems/mysql-2.8.1/ext"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/authlogic-2.1.3.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/authlogic-2.1.3/lib"]},
-        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/rake-0.8.7.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/mocha-0.9.8.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/mocha-0.9.8/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/jnunemaker-validatable-1.7.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/jnunemaker-validatable-1.7.2/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/mongomapper-0.4.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/mongomapper-0.4.2/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/mislav-will_paginate-2.3.11.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/mislav-will_paginate-2.3.11/lib"]},
         {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/polyglot-0.3.0.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/polyglot-0.3.0/lib"]},
         {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/treetop-1.4.4.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/treetop-1.4.4/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/diff-lcs-1.1.2.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/diff-lcs-1.1.2/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/mysql-2.8.1.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/lib", "/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/ext"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/authlogic-2.1.3.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/authlogic-2.1.3/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/rake-0.8.7.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/mocha-0.9.8.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/mocha-0.9.8/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/diff-lcs-1.1.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/diff-lcs-1.1.2/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/rspec-1.2.9.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/rspec-1.2.9/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/rspec-rails-1.2.9.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/rspec-rails-1.2.9/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/lukeredpath-simpleconfig-1.0.2.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/lukeredpath-simpleconfig-1.0.2/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/lukeredpath-simpleconfig-1.0.2.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/lukeredpath-simpleconfig-1.0.2/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/ruby-net-ldap-0.0.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/ruby-net-ldap-0.0.4/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/activerecord-2.3.4.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/activerecord-2.3.4/lib"]},
-        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/term-ansicolor-1.0.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/term-ansicolor-1.0.4/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/cucumber-0.6.1.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/cucumber-0.6.1/lib"]},
-        {:loaded_from=>"/Users/comes/.bundle/ruby/1.8/specifications/activeresource-2.3.4.gemspec", :load_paths=>["/Users/comes/.bundle/ruby/1.8/gems/activeresource-2.3.4/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/activerecord-2.3.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/activerecord-2.3.4/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/activeresource-2.3.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/activeresource-2.3.4/lib"]},
         {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/rails-2.3.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/rails-2.3.4/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/term-ansicolor-1.0.4.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/term-ansicolor-1.0.4/lib"]},
+        {:loaded_from=>"/Library/Ruby/Gems/1.8/specifications/cucumber-0.6.1.gemspec", :load_paths=>["/Library/Ruby/Gems/1.8/gems/cucumber-0.6.1/lib"]},
       ].map do |hash|
     spec = eval(File.read(hash[:loaded_from]), binding, hash[:loaded_from])
     spec.loaded_from = hash[:loaded_from]

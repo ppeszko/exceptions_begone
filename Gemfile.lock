@@ -1,29 +1,29 @@
 --- 
 dependencies: 
-  ruby-net-ldap: 
-    group: 
-    - :default
-    version: = 0.0.4
-    require: 
-    - net/ldap
-  rails: 
-    group: 
-    - :default
-    version: = 2.3.4
   lukeredpath-simpleconfig: 
     group: 
     - :default
     version: = 1.0.2
     require: 
     - simpleconfig
-  mysql: 
+  rails: 
     group: 
     - :default
-    version: ">= 0"
+    version: = 2.3.4
+  ruby-net-ldap: 
+    group: 
+    - :default
+    version: = 0.0.4
+    require: 
+    - net/ldap
   authlogic: 
     group: 
     - :default
     version: = 2.1.3
+  mysql: 
+    group: 
+    - :default
+    version: ">= 0"
   mislav-will_paginate: 
     group: 
     - :default
@@ -34,10 +34,24 @@ dependencies:
     group: 
     - :cucumber
     version: ">= 1.2.9"
+  jnunemaker-validatable: 
+    group: 
+    - :default
+    version: ">= 0"
   database_cleaner: 
     group: 
     - :cucumber
     version: ">= 0.2.3"
+  mongomapper: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - mongo_mapper
+  mongodb-mongo: 
+    group: 
+    - :default
+    version: ">= 0"
   rspec-rails: 
     group: 
     - :cucumber
@@ -77,58 +91,62 @@ dependencies:
     require: 
     - rails-footnotes
 specs: 
-- nokogiri: 
-    version: 1.4.1
 - josevalim-rails-footnotes: 
     version: 3.6.2
 - nokogiri: 
     version: 1.4.1
-- builder: 
-    version: 2.1.2
 - thoughtbot-factory_girl: 
     version: 1.2.2
 - activesupport: 
     version: 2.3.4
+- builder: 
+    version: 2.1.2
+- actionmailer: 
+    version: 2.3.4
 - json_pure: 
-    version: 1.2.1
+    version: 1.2.2
 - redgreen: 
     version: 1.2.2
 - cucumber-rails: 
     version: 0.2.3
+- mongodb-mongo: 
+    version: 0.14.1
 - rack: 
     version: 1.0.1
 - actionpack: 
-    version: 2.3.4
-- actionmailer: 
     version: 2.3.4
 - webrat: 
     version: 0.6.0
 - database_cleaner: 
     version: 0.5.0
+- jnunemaker-validatable: 
+    version: 1.7.2
+- mongomapper: 
+    version: 0.4.2
 - mislav-will_paginate: 
     version: 2.3.11
 - polyglot: 
     version: 0.3.0
 - treetop: 
     version: 1.4.4
+- mysql: 
+    version: 2.8.1
+- authlogic: 
+    version: 2.1.3
 - rake: 
     version: 0.8.7
 - mocha: 
     version: 0.9.8
-- authlogic: 
-    version: 2.1.3
-- mysql: 
-    version: 2.8.1
 - diff-lcs: 
     version: 1.1.2
 - rspec: 
     version: 1.2.9
 - rspec-rails: 
     version: 1.2.9
-- ruby-net-ldap: 
-    version: 0.0.4
 - lukeredpath-simpleconfig: 
     version: 1.0.2
+- ruby-net-ldap: 
+    version: 0.0.4
 - activerecord: 
     version: 2.3.4
 - activeresource: 
@@ -139,7 +157,7 @@ specs:
     version: 1.0.4
 - cucumber: 
     version: 0.6.1
-hash: 5c1d17668ac5f9517ddb8c5f64d1066497d95bdd
+hash: a6294021c2a3c6e7a8c9fd0eef61969852f429d3
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
