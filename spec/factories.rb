@@ -1,3 +1,5 @@
+require "factory_girl" # without this line bundle exec rake cannot find the Factory class :(
+
 Factory.define :user do |u|
   u.username "husky"
   u.password "secret"

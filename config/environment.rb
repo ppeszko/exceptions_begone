@@ -48,3 +48,5 @@ Rails::Initializer.run do |config|
   config.gem "lukeredpath-simpleconfig", :lib => "simpleconfig"
   config.gem "ruby-net-ldap", :lib => "net/ldap"
 end
+
+require "will_paginate"
