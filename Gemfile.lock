@@ -1,35 +1,96 @@
 --- 
 dependencies: 
-- authlogic: = 2.1.3
-- mislav-will_paginate: = 2.3.11
-- lukeredpath-simpleconfig: = 1.0.2
-- ruby-net-ldap: = 0.0.4
-- josevalim-rails-footnotes: ">= 0"
-- redgreen: ">= 0"
-- thoughtbot-factory_girl: = 1.2.2
-- webrat: = 0.6.0
-- cucumber: = 0.6.1
-- rspec: = 1.2.9
-- rspec-rails: = 1.2.9
-- cucumber-rails: ">= 0.2.3"
-- database_cleaner: ">= 0.2.3"
-- webrat: ">= 0.6.0"
-- rspec: ">= 1.2.9"
-- rspec-rails: ">= 1.2.9"
-- thoughtbot-factory_girl: = 1.2.2
+  ruby-net-ldap: 
+    group: 
+    - :default
+    version: = 0.0.4
+    require: 
+    - net/ldap
+  lukeredpath-simpleconfig: 
+    group: 
+    - :default
+    version: = 1.0.2
+    require: 
+    - simpleconfig
+  authlogic: 
+    group: 
+    - :default
+    version: = 2.1.3
+  mislav-will_paginate: 
+    group: 
+    - :default
+    version: = 2.3.11
+    require: 
+    - will_paginate
+  jnunemaker-validatable: 
+    group: 
+    - :default
+    version: ">= 0"
+  rspec: 
+    group: 
+    - :cucumber
+    version: ">= 1.2.9"
+  database_cleaner: 
+    group: 
+    - :cucumber
+    version: ">= 0.2.3"
+  rspec-rails: 
+    group: 
+    - :cucumber
+    version: ">= 1.2.9"
+  mongodb-mongo: 
+    group: 
+    - :default
+    version: ">= 0"
+  mongomapper: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - mongo_mapper
+  webrat: 
+    group: 
+    - :cucumber
+    version: ">= 0.6.0"
+  cucumber-rails: 
+    group: 
+    - :cucumber
+    version: ">= 0.2.3"
+  redgreen: 
+    group: 
+    - :test
+    version: ">= 0"
+  cucumber: 
+    group: 
+    - :test
+    version: = 0.6.1
+    require: []
+
+  thoughtbot-factory_girl: 
+    group: 
+    - :cucumber
+    version: = 1.2.2
+    require: 
+    - factory_girl
+  josevalim-rails-footnotes: 
+    group: 
+    - :development
+    version: ">= 0"
+    require: 
+    - rails-footnotes
 specs: 
-- josevalim-rails-footnotes: 
-    version: 3.6.2
 - nokogiri: 
     version: 1.4.1
-- thoughtbot-factory_girl: 
-    version: 1.2.2
+- josevalim-rails-footnotes: 
+    version: 3.6.2
 - builder: 
     version: 2.1.2
+- thoughtbot-factory_girl: 
+    version: 1.2.2
 - activesupport: 
     version: 2.3.5
 - json_pure: 
-    version: 1.2.0
+    version: 1.2.2
 - redgreen: 
     version: 1.2.2
 - cucumber-rails: 
@@ -39,30 +100,36 @@ specs:
 - webrat: 
     version: 0.6.0
 - database_cleaner: 
-    version: 0.4.1
+    version: 0.5.0
+- mongodb-mongo: 
+    version: 0.14.1
+- jnunemaker-validatable: 
+    version: 1.7.2
+- mongomapper: 
+    version: 0.4.2
 - mislav-will_paginate: 
     version: 2.3.11
-- authlogic: 
-    version: 2.1.3
+- polyglot: 
+    version: 0.3.0
+- treetop: 
+    version: 1.4.4
 - diff-lcs: 
     version: 1.1.2
 - rspec: 
     version: 1.2.9
 - rspec-rails: 
     version: 1.2.9
-- polyglot: 
-    version: 0.2.9
-- treetop: 
-    version: 1.4.3
-- lukeredpath-simpleconfig: 
-    version: 1.0.2
+- authlogic: 
+    version: 2.1.3
 - ruby-net-ldap: 
     version: 0.0.4
+- lukeredpath-simpleconfig: 
+    version: 1.0.2
 - term-ansicolor: 
     version: 1.0.4
 - cucumber: 
     version: 0.6.1
-hash: 9f655d7d490ccc8451007dcb28bd7f880a2aa04a
+hash: 6f214c981c1e6b55ee45564e4e3e2f832ae74fcf
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
