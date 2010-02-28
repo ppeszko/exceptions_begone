@@ -6,13 +6,13 @@ gem "rails", "2.3.4"
 gem "mysql"
 
 gem "authlogic", "2.1.3"
-gem "mislav-will_paginate", "2.3.11", :require => "will_paginate"
+# gem "mislav-will_paginate", "2.3.11", :require => "will_paginate"
 gem "lukeredpath-simpleconfig", "1.0.2", :require => "simpleconfig"
 gem "ruby-net-ldap", "0.0.4", :require => "net/ldap"
 
 gem "mongodb-mongo"
 gem "jnunemaker-validatable"
-gem "mongomapper", :require => "mongo_mapper"
+gem "mongomapper"
 
 group :development do
   gem "josevalim-rails-footnotes", :require => "rails-footnotes"

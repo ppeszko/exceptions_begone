@@ -46,8 +46,6 @@ dependencies:
     group: 
     - :default
     version: ">= 0"
-    require: 
-    - mongo_mapper
   mongodb-mongo: 
     group: 
     - :default
@@ -157,7 +155,7 @@ specs:
     version: 1.0.4
 - cucumber: 
     version: 0.6.1
-hash: a6294021c2a3c6e7a8c9fd0eef61969852f429d3
+hash: ed1cf97818fd910243e9d5c25970842dc9daf494
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

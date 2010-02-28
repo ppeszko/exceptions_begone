@@ -1,29 +1,30 @@
-class Stack < ActiveRecord::Base
+class Stack 
   include MongoMapper::Document
 
-  belongs_to :user
-  belongs_to :project
-  has_many :notifications, :dependent => :destroy
+  key :identifier
+  # belongs_to :user
+  # belongs_to :project
+  # has_many :notifications, :dependent => :destroy
     
-  named_scope :with_status, lambda { |filter| condition_for_filter(filter) }
-  named_scope :for_email_notifications, :conditions => {:email_sent => false}
-  named_scope :not_done, :conditions => ["status != 2"]
-  named_scope :with_identifier, lambda { |identifier| {:conditions => ["identifier LIKE ?", "%#{identifier}%"]} } 
-  named_scope :exceeding_warning_threshold, lambda { |threshold| {:conditions => ["notifications_count > ?", threshold]} }
-  named_scope :warning_not_sent, :conditions => ["threshold_warning_sent != ?", true]
-  named_scope :exclusions_matching, lambda { |exclusions, matching_mode| conditions_for_exclusions(exclusions, matching_mode) }
+  # named_scope :with_status, lambda { |filter| condition_for_filter(filter) }
+  # named_scope :for_email_notifications, :conditions => {:email_sent => false}
+  # named_scope :not_done, :conditions => ["status != 2"]
+  # named_scope :with_identifier, lambda { |identifier| {:conditions => ["identifier LIKE ?", "%#{identifier}%"]} } 
+  # named_scope :exceeding_warning_threshold, lambda { |threshold| {:conditions => ["notifications_count > ?", threshold]} }
+  # named_scope :warning_not_sent, :conditions => ["threshold_warning_sent != ?", true]
+  # named_scope :exclusions_matching, lambda { |exclusions, matching_mode| conditions_for_exclusions(exclusions, matching_mode) }
 
   @@status_to_integer = {"incoming" => 0, "processing" => 1, "done" => 2}
   @@integer_to_status = @@status_to_integer.invert
     
-  def before_create
-    self.status = @@integer_to_status[0]
-    self.last_occurred_at = Time.now unless self.last_occurred_at
-  end
+#  def before_create
+#    self.status = @@integer_to_status[0]
+#    self.last_occurred_at = Time.now unless self.last_occurred_at
+#  end
   
-  def before_update
-    self.last_occurred_at = Time.now
-  end
+#  def before_update
+#    self.last_occurred_at = Time.now
+#  end
     
   class << self
   
