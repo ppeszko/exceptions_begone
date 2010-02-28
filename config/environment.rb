@@ -49,3 +49,5 @@ Rails::Initializer.run do |config|
   config.gem "ruby-net-ldap", :lib => "net/ldap"
   config.gem "mongo_mapper"
 end
+
+require "will_paginate"

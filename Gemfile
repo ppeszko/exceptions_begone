@@ -1,7 +1,9 @@
 # A sample Gemfile
 source :gemcutter
 #
-# gem "rails"
+gem "rails", "2.3.4"
+
+gem "mysql"
 
 gem "authlogic", "2.1.3"
 gem "mislav-will_paginate", "2.3.11", :require => "will_paginate"
@@ -23,6 +25,7 @@ group :test do
   gem "cucumber", "0.6.1", :require => false
   gem "rspec", "1.2.9", :require => false
   gem "rspec-rails", "1.2.9", :require => false
+  gem "mocha"
 end
 
 group :cucumber do
