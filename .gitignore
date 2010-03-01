@@ -6,3 +6,5 @@ vendor/rails
 Capfile
 /doc/
 rerun.txt
+Gemfile.lock
+.bundle/environment.rb
