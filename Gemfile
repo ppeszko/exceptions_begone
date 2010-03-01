@@ -12,7 +12,7 @@ gem "ruby-net-ldap", "0.0.4", :require => "net/ldap"
 
 gem "mongodb-mongo"
 gem "jnunemaker-validatable"
-gem "mongomapper"
+gem "mongo_mapper", "0.7.0", :require => "mongomapper"
 
 group :development do
   gem "josevalim-rails-footnotes", :require => "rails-footnotes"

@@ -2,6 +2,14 @@ class Stack
   include MongoMapper::Document
 
   key :identifier
+  key :status
+  key :notifications_count
+  key :category
+  key :email_sent
+  key :threshold_warning_sent
+  
+  timestamps!
+
   # belongs_to :user
   # belongs_to :project
   # has_many :notifications, :dependent => :destroy
@@ -17,14 +25,14 @@ class Stack
   @@status_to_integer = {"incoming" => 0, "processing" => 1, "done" => 2}
   @@integer_to_status = @@status_to_integer.invert
     
-#  def before_create
-#    self.status = @@integer_to_status[0]
-#    self.last_occurred_at = Time.now unless self.last_occurred_at
-#  end
-  
-#  def before_update
-#    self.last_occurred_at = Time.now
-#  end
+  # def before_create
+    # self.status = @@integer_to_status[0]
+    # self.last_occurred_at = Time.now unless self.last_occurred_at
+  # end
+   
+  # def before_update
+    # self.last_occurred_at = Time.now
+  # end
     
   class << self
   
