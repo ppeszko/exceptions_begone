@@ -7,12 +7,13 @@ class Stack
   key :category
   key :email_sent
   key :threshold_warning_sent
+  key :last_occurred_at
   
   timestamps!
 
   # belongs_to :user
   # belongs_to :project
-  # has_many :notifications, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
     
   # named_scope :with_status, lambda { |filter| condition_for_filter(filter) }
   # named_scope :for_email_notifications, :conditions => {:email_sent => false}
@@ -24,15 +25,15 @@ class Stack
 
   @@status_to_integer = {"incoming" => 0, "processing" => 1, "done" => 2}
   @@integer_to_status = @@status_to_integer.invert
-    
-  # def before_create
-    # self.status = @@integer_to_status[0]
-    # self.last_occurred_at = Time.now unless self.last_occurred_at
-  # end
    
-  # def before_update
-    # self.last_occurred_at = Time.now
-  # end
+  before_create do |record|
+    record.status = @@integer_to_status[0]
+    record.last_occurred_at = Time.now unless record.last_occurred_at
+  end
+
+  before_update do |record|
+    record.last_occurred_at = Time.now
+  end
     
   class << self
   

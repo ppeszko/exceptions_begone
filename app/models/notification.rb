@@ -1,6 +1,7 @@
-class Notification < ActiveRecord::Base
-  
-  belongs_to :stack, :counter_cache => true, :touch => :last_occured_at
+class Notification 
+  include MongoMapper::Document
+
+  belongs_to :stack #, :counter_cache => true, :touch => :last_occured_at
 
   def self.build(project, parameters)
     parameters.symbolize_keys!
