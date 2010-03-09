@@ -1,7 +1,7 @@
 # A sample Gemfile
 source :gemcutter
 #
-gem "rails", "2.3.4"
+gem "rails", "2.3.5"
 
 gem "mysql"
 
