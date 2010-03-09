@@ -1,6 +1,11 @@
 class Notification 
   include MongoMapper::Document
 
+  key :identifier
+  key :payload
+  key :status
+  timestamps!
+
   belongs_to :stack #, :counter_cache => true, :touch => :last_occured_at
 
   def self.build(project, parameters)
