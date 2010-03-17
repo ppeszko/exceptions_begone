@@ -1,11 +1,23 @@
 require 'net/ldap'
 
-class User < ActiveRecord::Base
+class User
+  include MongoMapper::Document
+  
+  key :username
+  key :email
+  key :crypted_password
+  key :password_salt
+  key :password_salt
+  key :login_count
+  key :current_login_at
+  key :last_login_at
+  timestamps!
+
   has_many :stacks
   
-  acts_as_authentic do |authlogic|
-    authlogic.validate_password_field = false if AUTHLOGIC_ADDON == "ldap"
-  end
+  # acts_as_authentic do |authlogic|
+    # authlogic.validate_password_field = false if AUTHLOGIC_ADDON == "ldap"
+  # end
 
   protected
     def valid_ldap_credentials?(password_plaintext)

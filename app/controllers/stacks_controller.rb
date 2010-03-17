@@ -12,11 +12,7 @@ class StacksController < ApplicationController
     session[:filter] = params[:filter] ? params[:filter] : session[:filter]
     matching_mode = params[:filter] == "include" ? :include : :exclude
     
-    if params[:search]
-      @stacks = @project.stacks.with_identifier(params[:search]).exclusions_matching(@project.exclusions, matching_mode).paginate(:per_page => per_page, :page => params[:page], :order => order)
-    else
-      @stacks = @project.stacks.with_status(session[:filter]).exclusions_matching(@project.exclusions, matching_mode).paginate(:per_page => per_page, :page => params[:page], :order => order)
-    end
+    @stack = @project.all_stacks(matching_mode, params[:search])
   end
   
   def show

@@ -9,13 +9,13 @@
             <th id="project-description-col">Description</th>
             <th class="last">Warning threshold</th>
           </tr>
-          <%= render @projects %>
+          <%= render :partial => "project", :collection => @projects %>
         </table>
           <div class="actions-bar">
             <div class="actions">
               <%= link_to "Create", new_project_path, :class => "button" %>
             </div>
-            <%= will_paginate(@projects) %>
+            <%#= will_paginate(@projects) %>
             <div class="clear"></div>
           </div>
       </div>

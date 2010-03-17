@@ -13,21 +13,20 @@ class ApplicationController < ActionController::Base
   private
   
   def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
+    #return @current_user_session if defined?(@current_user_session)
+    #@current_user_session = UserSession.find
   end
   
   def current_user
-    return current_user_session && current_user_session.record
+    #return current_user_session && current_user_session.record
   end
   
   def load_project
     project_id = params[:project_id] ? params[:project_id] : params[:id]
     
-    @project = if project_id =~ /^\d+$/
-      Project.find(project_id)
-    else
-      Project.find_by_name(project_id)
+    @project = Project.find_by_name(project_id)
+    unless @project
+      @project = Project.find(project_id)
     end
   end
 end
