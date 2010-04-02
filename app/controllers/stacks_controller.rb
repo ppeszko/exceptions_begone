@@ -12,11 +12,12 @@ class StacksController < ApplicationController
     session[:filter] = params[:filter] ? params[:filter] : session[:filter]
     matching_mode = params[:filter] == "include" ? :include : :exclude
     
-    @stack = @project.all_stacks(matching_mode, params[:search])
+    @stacks = @project.all_stacks(matching_mode, params[:search])
   end
   
   def show
-    @notifications = Notification.paginate_by_stack_id(params[:id], :per_page => 1, :page => params[:page], :order => "id ASC")
+    stack = Stack.find(params[:id])    
+    @notifications = stack.notifications.paginate(:per_page => 1, :page => params[:page], :order => "id ASC")
     @notification = @notifications.first
     @sections = ActiveSupport::JSON.decode(@notification.payload)
     @backtrace = @sections.delete("backtrace")

@@ -11,9 +11,9 @@ class Stack
   
   timestamps!
 
-  # belongs_to :user
+  belongs_to :user
   # belongs_to :project
-  has_many :notifications, :dependent => :destroy
+  many :notifications, :dependent => :destroy
     
   # named_scope :with_status, lambda { |filter| condition_for_filter(filter) }
   # named_scope :for_email_notifications, :conditions => {:email_sent => false}
@@ -86,7 +86,18 @@ class Stack
     end
     
     def find_or_create(project, category, identifier)
-      find_or_create_by_project_id_and_category_and_identifier(project.id, category, identifier)
+      stack = find_or_create_by_project_id_and_category_and_identifier(project.id, category, identifier)
+      save_user_associations(stack)
+      stack
+    end
+    
+    private 
+
+    def save_user_associations(stack)
+      unless stack.key_names.include?("user_id")
+        stack.user = nil
+        stack.save
+      end
     end
   end
   

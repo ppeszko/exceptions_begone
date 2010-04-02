@@ -2,7 +2,7 @@
   <div class="block" id="block-text">
     <div class="content">
 
-      <%= will_paginate @notifications %>
+      <%#= will_paginate @notifications %>
       <%= render :partial => "processing_actions", :locals => {:stack => @notification.stack} %>
 
       <div class="identifier">
@@ -14,7 +14,7 @@
         <%= render :partial => "backtrace", :object => @backtrace if @backtrace %>
       </div>
       
-      <%= will_paginate @notifications %>
+      <%#= will_paginate @notifications %>
     </div>
   </div>
 </div>

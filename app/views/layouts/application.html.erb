@@ -27,7 +27,7 @@
         <div id="main-navigation">
           <ul>
             <li class="first"><%= link_to "Projects", projects_path %></li>
-            <% if @project && @project.id.present? %>
+            <% if @project && !@project.new? %>
               <li class="active"><%= link_to @project.name, project_stacks_path(@project) %></li>
               <li><%= link_to "Atom Feed", project_stacks_path(@project, :atom) %></li>
             <% end %>

@@ -9,7 +9,7 @@
     <%= h stack.category %>
   </td>
   <td>
-    <span class="<%= h stack.status %>"><%= h stack.status %> <%= stack.user ? "(#{h(stack.user.username)})" : "" %></span>
+    <span class="<%= h stack.status %>"><%= h stack.status %> <%= stack.user.present? ? "(#{h(stack.user.username)})" : "" %></span>
   </td>
   <td>
     <%= h stack.updated_at.to_s(:short) %>

@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
   
   def create
     @project = Project.new(params[:project])
+    
     if @project.save
       flash[:notice] = "You accidentally the whole project!!!"
       redirect_to root_url

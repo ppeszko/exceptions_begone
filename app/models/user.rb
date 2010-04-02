@@ -13,7 +13,7 @@ class User
   key :last_login_at
   timestamps!
 
-  has_many :stacks
+  many :stacks
   
   # acts_as_authentic do |authlogic|
     # authlogic.validate_password_field = false if AUTHLOGIC_ADDON == "ldap"
