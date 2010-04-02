@@ -10,12 +10,14 @@ gem "authlogic", "2.1.3"
 gem "lukeredpath-simpleconfig", "1.0.2", :require => "simpleconfig"
 gem "ruby-net-ldap", "0.0.4", :require => "net/ldap"
 
-gem "mongodb-mongo"
+gem "mongo"
+gem "mongo_ext"
 gem "jnunemaker-validatable"
-gem "mongo_mapper", "0.7.0", :require => "mongomapper"
+gem "mongo_mapper", "0.7.2", :require => "mongomapper"
 
 group :development do
   gem "josevalim-rails-footnotes", :require => "rails-footnotes"
+  gem "ruby-debug"
 end
 
 group :test do

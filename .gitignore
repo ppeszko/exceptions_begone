@@ -9,3 +9,4 @@ rerun.txt
 Gemfile.lock
 .bundle/environment.rb
 /tags
+vendor/cache
