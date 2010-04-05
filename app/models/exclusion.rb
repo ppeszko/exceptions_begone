@@ -2,7 +2,7 @@ class Exclusion
   include MongoMapper::Document
   
   key :name
-  key :enabled
+  key :enabled, Boolean, :default => false
   key :pattern
   timestamps!
 
