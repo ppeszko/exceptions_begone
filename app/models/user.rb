@@ -1,23 +1,34 @@
 require 'net/ldap'
-
 class User
   include MongoMapper::Document
+
+  include Authlogic::ActsAsAuthentic::Base
+  include Authlogic::ActsAsAuthentic::Email
+  include Authlogic::ActsAsAuthentic::LoggedInStatus
+  include Authlogic::ActsAsAuthentic::Login
+  include Authlogic::ActsAsAuthentic::MagicColumns
+  include Authlogic::ActsAsAuthentic::Password
+  include Authlogic::ActsAsAuthentic::PerishableToken
+  include Authlogic::ActsAsAuthentic::PersistenceToken
+  include Authlogic::ActsAsAuthentic::RestfulAuthentication
+  include Authlogic::ActsAsAuthentic::SessionMaintenance
+  include Authlogic::ActsAsAuthentic::SingleAccessToken
+  include Authlogic::ActsAsAuthentic::ValidationsScope
   
-  key :username
-  key :email
   key :crypted_password
-  key :password_salt
-  key :password_salt
-  key :login_count
   key :current_login_at
+  key :email
   key :last_login_at
+  key :password_salt
+  key :persistence_token
+  key :username
   timestamps!
 
   many :stacks
   
-  # acts_as_authentic do |authlogic|
-    # authlogic.validate_password_field = false if AUTHLOGIC_ADDON == "ldap"
-  # end
+  acts_as_authentic do |authlogic|
+    authlogic.validate_password_field = false if AUTHLOGIC_ADDON == "ldap"
+  end
 
   protected
     def valid_ldap_credentials?(password_plaintext)
