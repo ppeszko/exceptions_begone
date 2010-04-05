@@ -12,7 +12,7 @@ class StacksController < ApplicationController
     session[:filter] = params[:filter] ? params[:filter] : session[:filter]
     matching_mode = params[:filter] == "include" ? :include : :exclude
     
-    @stacks = @project.all_stacks(matching_mode, params[:search])
+    @stacks = @project.find_stacks(params[:search])
   end
   
   def show
