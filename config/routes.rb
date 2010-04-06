@@ -43,7 +43,6 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   
   map.resources :user_sessions
-  map.resources :users
   map.resources :projects do |project|
     project.resources :stacks do |stacks|
       stacks.resources :notifications

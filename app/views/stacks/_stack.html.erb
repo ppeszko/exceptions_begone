@@ -9,7 +9,7 @@
     <%= h stack.category %>
   </td>
   <td>
-    <span class="<%= h stack.status %>"><%= h stack.status %> <%= stack.user.present? ? "(#{h(stack.user.username)})" : "" %></span>
+    <span class="<%= h stack.status %>"><%= h stack.status %> <%= stack.username.present? ? "(#{h(stack.username)})" : "" %></span>
   </td>
   <td>
     <%= h stack.updated_at.to_s(:short) %>
@@ -21,12 +21,12 @@
     <% if current_user && stack.can_change_status?(current_user) %>
       <% form_for([@project, stack], :html => {:class => "table-buttons"}) do |f| %>
         <%= f.hidden_field :status, :value => "incoming" %>
-        <%= f.hidden_field :user_id, :value => "" %>
+        <%= f.hidden_field :username, :value => "" %>
         <%= f.submit "abort", :class => "flat-button" %>
       <% end %>
       <% form_for([@project, stack], :html => {:class => "table-buttons"}) do |f| %>
         <%= f.hidden_field :status, :value => (stack.cycle_status) %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :username, :value => current_user %>
         <%= f.submit stack.cycle_status, :class => "flat-button"%>
       <% end %> 
   <% end %>

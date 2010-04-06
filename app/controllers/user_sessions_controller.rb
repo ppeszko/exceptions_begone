@@ -5,18 +5,13 @@ class UserSessionsController < ApplicationController
   end
   
   def create
-    @user_session = UserSession.new(params[:user_session], :remember_me => params[:user_session][:remember_me] == "1")
-    if @user_session.save
-      flash[:notice] = "Logged in"
-      redirect_to root_url
-    else
-      render :new
-    end
+    cookies[:current_user] = params[:user_session][:username]
+    flash[:notice] = "Logged in"
+    redirect_to root_url
   end
   
   def destroy
-    @user_session = UserSession.find
-    @user_session.destroy
+    cookies.delete :current_user
     flash[:notice] = "Logged out"
     redirect_to root_url
   end

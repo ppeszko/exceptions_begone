@@ -1,17 +1,17 @@
 class Stack 
   include MongoMapper::Document
 
-  key :identifier
-  key :status
+  key :identifier, String
+  key :status, Integer
   key :notifications_count
   key :category
   key :email_sent
   key :threshold_warning_sent
   key :last_occurred_at
+  key :username, String
   
   timestamps!
 
-  belongs_to :user
   # belongs_to :project
   many :notifications, :dependent => :destroy
     
@@ -86,18 +86,7 @@ class Stack
     end
     
     def find_or_create(project, category, identifier)
-      stack = find_or_create_by_project_id_and_category_and_identifier(project.id, category, identifier)
-      save_user_associations(stack)
-      stack
-    end
-    
-    private 
-
-    def save_user_associations(stack)
-      unless stack.key_names.include?("user_id")
-        stack.user = nil
-        stack.save
-      end
+      find_or_create_by_project_id_and_category_and_identifier(project.id, category, identifier)
     end
   end
   
@@ -113,7 +102,7 @@ class Stack
   end
   
   def status=(s)
-    self[:status] = @@status_to_integer[s]
+    self[:status] = s.is_a?(Integer) ? s : @@status_to_integer[s]
   end
   
   def cycle_status
@@ -121,11 +110,11 @@ class Stack
     @@integer_to_status.fetch(actual_integer_status + 1, @@integer_to_status[0])
   end
   
-  def can_change_status?(user)
+  def can_change_status?(username)
     if status == @@integer_to_status[0]
       true
     else
-      self.user == user
+      self.username == username
     end
   end
   
