@@ -5,10 +5,8 @@ gem "rails", "2.3.5"
 
 gem "mysql"
 
-gem "authlogic", "2.1.3"
 # gem "mislav-will_paginate", "2.3.11", :require => "will_paginate"
 gem "lukeredpath-simpleconfig", "1.0.2", :require => "simpleconfig"
-gem "ruby-net-ldap", "0.0.4", :require => "net/ldap"
 
 gem "mongo"
 gem "mongo_ext"
