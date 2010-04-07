@@ -21,10 +21,3 @@ class Project
     end
   end
 end
-        # sql_pattern = "(#{exclusions_patterns.join('|')})"
-        # { :conditions => "identifier #{regex_command} '#{sql_pattern}'" }
-      # else
-        # {}
-      # end
-
-
