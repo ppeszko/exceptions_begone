@@ -1,11 +1,13 @@
+require 'ostruct'
+
 class UserSessionsController < ApplicationController
   
   def new
-    @user_session = UserSession.new
+    @user_session = OpenStruct.new
   end
   
   def create
-    cookies[:current_user] = params[:user_session][:username]
+    cookies[:current_user] = params[:open_struct][:username]
     flash[:notice] = "Logged in"
     redirect_to root_url
   end
