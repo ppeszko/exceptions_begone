@@ -2,14 +2,13 @@
   <div class="block" id="block-login">
     <h2>Login Box</h2>
     <div class="content login">
-      <% form_for @user_session, :html => {:class => "form login"} do |f| %>
+      <% form_for @user_session, :url => { :action => "create" }, :html => {:method => :post, :class => "form login"} do |f| %>
         <div class="group">
           <div class="left">
             <%= f.label :username, "Login", :class => "label right" %>
           </div>
           <div class="right">
             <%= f.text_field :username, :class => "text_field" %>
-            <%= error_message_on :user_session, :username %>
           </div>
           <div class="clear"></div>
         </div>

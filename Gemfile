@@ -8,10 +8,10 @@ gem "mysql"
 # gem "mislav-will_paginate", "2.3.11", :require => "will_paginate"
 gem "lukeredpath-simpleconfig", "1.0.2", :require => "simpleconfig"
 
-gem "mongo"
-gem "mongo_ext"
+gem "mongo", "0.19.3"
+gem "mongo_ext", "0.19.3"
 gem "jnunemaker-validatable"
-gem "mongo_mapper", "0.7.2", :require => "mongomapper"
+gem "mongo_mapper", "0.7.3", :require => "mongomapper"
 
 group :development do
   gem "josevalim-rails-footnotes", :require => "rails-footnotes"
