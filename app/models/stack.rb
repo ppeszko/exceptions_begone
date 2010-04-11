@@ -55,13 +55,13 @@ class Stack
       when "all"
         {}
       when "done"
-        {:conditions => {:status => 2}}
+        {:status => 2}
       when "incoming"
-        {:conditions => {:status => 0}}
+        {:status => 0}
       when "in_progress"
-        {:conditions => {:status => 1}}
+        {:status => 1}
       else
-        {:conditions => {:status => {:$not => {:$in => [2]}}}}
+        {:status => {:$not => {:$in => [2]}}}
       end
     end
     

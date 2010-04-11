@@ -14,10 +14,12 @@ class Project
 
     if search_query
       stacks.all(:identifier => /#{search_query}/)
-    elsif exclusion_patterns.present?  
-      stacks.all(:identifier => {:$not => /#{exclusion_patterns.join('|')}/})
     elsif filter.present?
-      stacks.all(Stack.condition_for_filter(filter))
+      if exclusion_patterns.present?
+        stacks.all({:identifier => {:$not => /#{exclusion_patterns.join('|')}/}}.merge(Stack.condition_for_filter(filter)))
+      else
+        stacks.all(Stack.condition_for_filter(filter))
+      end
     else
       stacks.all()
     end
