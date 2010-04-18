@@ -9,7 +9,7 @@ class NotificationsMailer < ActionMailer::Base
     sent_on     sent_at
     headers     "importance" => "high", "x-priority" => 1 if stack.warning_threshold_exceeded?
     
-    body        :stack => stack, :payload => ActiveSupport::JSON.decode(stack.notifications.last.payload)
+    body        :stack => stack, :payload => ActiveSupport::JSON.decode(stack.notifications.last(:order => 'created_at').payload)
   end
 
 end

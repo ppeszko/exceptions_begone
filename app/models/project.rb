@@ -3,7 +3,7 @@ class Project
 
   key :name
   key :description
-  key :warning_threshold
+  key :warning_threshold, Integer, :default => 10
   timestamps!
 
   many :stacks

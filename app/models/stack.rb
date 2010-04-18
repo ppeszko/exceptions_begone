@@ -5,23 +5,19 @@ class Stack
   key :status, Integer
   key :notifications_count
   key :category
-  key :email_sent
-  key :threshold_warning_sent
+  key :email_sent, Integer, :default => 0
+  key :threshold_warning_sent, Integer, :default => 0
   key :last_occurred_at
   key :username, String
   
   timestamps!
 
-  # belongs_to :project
+  belongs_to :project
   many :notifications, :dependent => :destroy
     
-  # named_scope :with_status, lambda { |filter| condition_for_filter(filter) }
   # named_scope :for_email_notifications, :conditions => {:email_sent => false}
-  # named_scope :not_done, :conditions => ["status != 2"]
-  # named_scope :with_identifier, lambda { |identifier| {:conditions => ["identifier LIKE ?", "%#{identifier}%"]} } 
   # named_scope :exceeding_warning_threshold, lambda { |threshold| {:conditions => ["notifications_count > ?", threshold]} }
   # named_scope :warning_not_sent, :conditions => ["threshold_warning_sent != ?", true]
-  # named_scope :exclusions_matching, lambda { |exclusions, matching_mode| conditions_for_exclusions(exclusions, matching_mode) }
 
   @@status_to_integer = {"incoming" => 0, "processing" => 1, "done" => 2}
   @@integer_to_status = @@status_to_integer.invert
@@ -36,7 +32,6 @@ class Stack
   end
     
   class << self
-  
     def conditions_for_exclusions(exclusions, matching_mode)
       exclusions_patterns = exclusions.active.map(&:pattern)
       
@@ -67,20 +62,26 @@ class Stack
     
     def send_notifications_to_users
       stacks = stacks_awaiting_sending
-      Rails.logger.info("[EMAIL] sending notification about following stacks: #{stacks.map(&:id)}")
+      logger.info("[EMAIL] sending notification about following stacks: #{stacks.map(&:id)}")
       stacks.each do |stack|
         NotificationsMailer.deliver_notification(stack)
-        stack.email_sent = true
-        stack.threshold_warning_sent = true if stack.warning_threshold_exceeded?
+        stack.email_sent = 1
+        stack.threshold_warning_sent = 1 if stack.warning_threshold_exceeded?
         stack.save!
       end
     end
-    
+
     def stacks_awaiting_sending
       awaiting_stacks = []
       Project.all.each do |project|
-        awaiting_stacks += project.stacks.for_email_notifications.exclusions_matching(project.exclusions, :exclude)
-        awaiting_stacks += project.stacks.exceeding_warning_threshold(project.warning_threshold).warning_not_sent.exclusions_matching(project.exclusions, :exclude)
+        exclusion_patterns = project.exclusions.all(:enabled => true).map(&:pattern)
+        if exclusion_patterns.present?
+          awaiting_stacks += project.stacks.all({:email_sent => 0, :identifier => {:$not => /#{exclusion_patterns.join('|')}/}})
+          awaiting_stacks += project.stacks.all(:identifier => {:$not => /#{exclusion_patterns.join('|')}/}, :threshold_warning_sent => 0, :notifications_count => {:$gt => project.warning_threshold})
+        else
+          awaiting_stacks += project.stacks.all(:email_sent => 0)
+          awaiting_stacks += project.stacks.all(:threshold_warning_sent => 0, :notifications_count => {:$gt => project.warning_threshold})
+        end
       end
       awaiting_stacks
     end
@@ -88,12 +89,16 @@ class Stack
     def find_or_create(project, category, identifier)
       find_or_create_by_project_id_and_category_and_identifier(project.id, category, identifier)
     end
+
+    def logger
+      @@logger ||= RAILS_DEFAULT_LOGGER
+    end
   end
   
   def reset_status!
     self.status = @@integer_to_status[0]
-    self.email_sent = false
-    self.threshold_warning_sent = false
+    self.email_sent = 0
+    self.threshold_warning_sent = 0
     self.save!
   end
 
