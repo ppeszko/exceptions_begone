@@ -8,8 +8,9 @@ class Notification
 
   belongs_to :stack #, :counter_cache => true, :touch => :last_occured_at
 
-  before_create do |record|
+  after_create do |record|
     record.stack.notifications_count += 1
+    record.stack.save
   end
 
   def self.build(project, parameters)

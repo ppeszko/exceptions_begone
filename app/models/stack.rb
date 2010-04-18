@@ -3,7 +3,7 @@ class Stack
 
   key :identifier, String
   key :status, Integer
-  key :notifications_count
+  key :notifications_count, :default => 0
   key :category
   key :email_sent, Integer, :default => 0
   key :threshold_warning_sent, Integer, :default => 0
