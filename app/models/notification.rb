@@ -8,6 +8,10 @@ class Notification
 
   belongs_to :stack #, :counter_cache => true, :touch => :last_occured_at
 
+  before_create do |record|
+    record.stack.notifications_count += 1
+  end
+
   def self.build(project, parameters)
     parameters.symbolize_keys!
     identifier, payload = parameters[:identifier], parameters[:payload].to_json
