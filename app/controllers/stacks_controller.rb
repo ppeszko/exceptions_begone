@@ -7,12 +7,15 @@ class StacksController < ApplicationController
     "updated_at" => "updated_at DESC", "created_at" => "created_at DESC"}
   
   def index
-    per_page = params[:per_page] || 50
+    per_page = (params[:per_page] && params[:per_page]) || 50
     order = @@order_possiblities.fetch(params[:order], "updated_at DESC")
     session[:filter] = params[:filter] ? params[:filter] : session[:filter]
     matching_mode = params[:filter] == "include" ? :include : :exclude
     
-    @stacks = @project.find_stacks(params[:search], session[:filter], order)
+    @pager  = Paginator.new(@project.stacks.count, per_page) do |offset, per_page|
+      @project.find_stacks(params[:search], session[:filter], :offset => offset, :limit => per_page, :order => order)
+    end
+    @stacks = @pager.page(params[:page])
   end
   
   def show

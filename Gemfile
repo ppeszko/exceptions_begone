@@ -6,6 +6,8 @@ gem "rails", "2.3.5"
 gem "mysql"
 
 # gem "mislav-will_paginate", "2.3.11", :require => "will_paginate"
+gem "paginator", "1.1.1"
+gem "gemcutter", "0.5.0"
 gem "lukeredpath-simpleconfig", "1.0.2", :require => "simpleconfig"
 
 gem "mongo", "0.19.3"

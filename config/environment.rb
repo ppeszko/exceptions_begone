@@ -43,9 +43,8 @@ Rails::Initializer.run do |config|
 
   config.action_mailer.delivery_method = :sendmail
   
-  # config.gem "mislav-will_paginate", :lib => "will_paginate", :source => "http://gems.github.com"
   config.gem "lukeredpath-simpleconfig", :lib => "simpleconfig"
   config.gem "mongo_mapper"
 end
 
-# require "will_paginate"
+require "paginator"

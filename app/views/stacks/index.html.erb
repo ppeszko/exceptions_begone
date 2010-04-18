@@ -34,12 +34,20 @@
             <th class="last-occurred-at"><%= link_to "Created at", project_stacks_url(@project, {:order => "created_at"}) %></th>
             <th class="last">Actions (log in to see)</th>
           </tr>
-          <%= render @stacks %>
+          <%= render :partial => "stack", :collection => @stacks %>
         </table>
         <div class="actions-bar">
           <div class="actions">
           </div>
-          <%#= will_paginate @stacks %>
+          <% if @stacks.prev? %>
+            <%= link_to("First", project_stacks_path(@project, :page => 1)) %>
+            <%= link_to("Prev -", project_stacks_path(@project, :page => @stacks.prev.number)) %> 
+          <% end %>
+          Page <%= @stacks.number %>/<%= @stacks.number_of_pages %>
+          <% if @stacks.next? %>
+            <%= link_to("- Next", project_stacks_path(@project, :page => @stacks.next.number)) %>
+            <%= link_to("Last", project_stacks_path(@project, :page => @stacks.number_of_pages)) %>       
+          <% end %>         
           <div class="clear"></div>
         </div>
       </div>

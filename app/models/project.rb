@@ -9,19 +9,20 @@ class Project
   many :stacks
   many :exclusions
 
-  def find_stacks(search_query, filter, order)
+  def find_stacks(search_query, filter, options = {})
     exclusion_patterns = exclusions.all(:enabled => true).map(&:pattern)
 
+    p options
     if search_query
-      stacks.all(:identifier => /#{search_query}/)
+      stacks.all({:identifier => /#{search_query}/}.merge(options))
     elsif filter.present?
       if exclusion_patterns.present?
-        stacks.all({:identifier => {:$not => /#{exclusion_patterns.join('|')}/}}.merge(Stack.condition_for_filter(filter)))
+        stacks.all({:identifier => {:$not => /#{exclusion_patterns.join('|')}/}}.merge(Stack.condition_for_filter(filter)).merge(options))
       else
-        stacks.all(Stack.condition_for_filter(filter))
+        stacks.all(Stack.condition_for_filter(filter).merge(options))
       end
     else
-      stacks.all()
+      stacks.all(options)
     end
   end
 end
