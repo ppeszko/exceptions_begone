@@ -2,7 +2,16 @@
   <div class="block" id="block-text">
     <div class="content">
 
-      <%#= will_paginate @notifications %>
+      <% if @notifications.prev? %>
+        <%= link_to("First", project_stacks_path(@project, :page => 1)) %>
+        <%= link_to("Prev -", project_stacks_path(@project, :page => @notifications.prev.number)) %> 
+      <% end %>
+      Page <%= @notifications.number %>/<%= @notifications.number_of_pages %>
+      <% if @notifications.next? %>
+        <%= link_to("- Next", project_stacks_path(@project, :page => @notifications.next.number)) %>
+        <%= link_to("Last", project_stacks_path(@project, :page => @notifications.number_of_pages)) %>       
+      <% end %>         
+      
       <%= render :partial => "processing_actions", :locals => {:stack => @notification.stack} %>
 
       <div class="identifier">

@@ -12,7 +12,7 @@ class StacksController < ApplicationController
     session[:filter] = params[:filter] ? params[:filter] : session[:filter]
     matching_mode = params[:filter] == "include" ? :include : :exclude
     
-    @pager  = Paginator.new(@project.stacks.count, per_page) do |offset, per_page|
+    @pager = Paginator.new(@project.stacks.count, per_page) do |offset, per_page|
       @project.find_stacks(params[:search], session[:filter], :offset => offset, :limit => per_page, :order => order)
     end
     @stacks = @pager.page(params[:page])
@@ -20,8 +20,14 @@ class StacksController < ApplicationController
   
   def show
     stack = Stack.find(params[:id])
-    @notifications = stack.notifications.paginate(:per_page => 1, :page => params[:page], :order => "id ASC")
+    
+    @pager = Paginator.new(stack.notifications_count, 1) do |offset, per_page|
+      stack.notifications.all(:offset => offset, :limit => per_page, :order => "id ASC")
+    end
+    
+    @notifications = @pager.page(params[:page])
     @notification = @notifications.first
+    
     @sections = ActiveSupport::JSON.decode(@notification.payload)
     @backtrace = @sections.delete("backtrace")
     @backtrace = @backtrace.join("<br/>") if @backtrace
