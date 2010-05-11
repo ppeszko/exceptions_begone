@@ -30,7 +30,7 @@ class StacksController < ApplicationController
     
     @sections = ActiveSupport::JSON.decode(@notification.payload)
     @backtrace = @sections.delete("backtrace")
-    @backtrace = @backtrace.join("<br/>") if @backtrace
+    @backtrace = @backtrace.join("<br/>") if @backtrace.present?
   end
   
   def update

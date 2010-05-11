@@ -7,7 +7,7 @@ open in browser >> <%= project_stack_url(@stack.project, @stack) %> <<
   <%= section %>
   ------------------------------
   <% if section == "backtrace" %>
-    <%= value.join("\n").to_yaml -%>
+    <%= value.join("\n").to_yaml if value.present? -%>
   <% else %>
     <% sorted_output(value).each do |array_with_data| %>
       <%= "#{array_with_data.first}#{': ' + array_with_data.last.inspect if array_with_data.last}" -%>
