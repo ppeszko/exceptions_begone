@@ -83,7 +83,11 @@ class Stack
           awaiting_stacks += project.stacks.all(:threshold_warning_sent => 0, :notifications_count => {:$gt => project.warning_threshold})
         end
       end
-      awaiting_stacks
+      remove_routing_errors(awaiting_stacks)
+    end
+    
+    def remove_routing_errors(stacks)
+      stacks.reject { |stack| stack.identifier =~ /\(ActionController::RoutingError\)/ && !stack.notifications.first.payload.include?("HTTP_REFERER") }
     end
     
     def find_or_create(project, category, identifier)
